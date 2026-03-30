@@ -1,19 +1,27 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { z } from 'zod';
+import { escapeHtml } from '@/lib/utils';
 
 // ── Validation Schema ──────────────────────────────────────────────
 const contactSchema = z.object({
-  firstName: z.string().min(1, 'First name is required').max(50),
-  lastName: z.string().min(1, 'Last name is required').max(50),
+  first_name: z.string().min(1, 'First name is required').max(50),
+  last_name: z.string().optional().default(''),
   email: z.string().email('Invalid email address'),
   phone: z.string().optional(),
   service: z.string().min(1, 'Service is required'),
-  message: z.string().min(2, 'Message is too short').max(5000),
+  message: z.string().min(1, 'Message is too short').max(5000),
 });
 
 // ── Email HTML Template ────────────────────────────────────────────
 function buildEmailHtml(data: z.infer<typeof contactSchema>): string {
+  const firstName = escapeHtml(data.first_name);
+  const lastName = escapeHtml(data.last_name);
+  const email = escapeHtml(data.email);
+  const phone = escapeHtml(data.phone || 'Not provided');
+  const service = escapeHtml(data.service);
+  const message = escapeHtml(data.message);
+
   return `
     <div style="font-family: 'Segoe UI', Arial, sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden;">
       <!-- Header -->
@@ -30,22 +38,22 @@ function buildEmailHtml(data: z.infer<typeof contactSchema>): string {
           <table style="width: 100%; border-collapse: collapse;">
             <tr>
               <td style="padding: 8px 0; color: #64748b; font-size: 13px; width: 100px;">Name</td>
-              <td style="padding: 8px 0; font-weight: 600; color: #1e293b;">${data.firstName} ${data.lastName}</td>
+              <td style="padding: 8px 0; font-weight: 600; color: #1e293b;">${firstName} ${lastName}</td>
             </tr>
             <tr>
               <td style="padding: 8px 0; color: #64748b; font-size: 13px;">Email</td>
               <td style="padding: 8px 0; font-weight: 600; color: #1e293b;">
-                <a href="mailto:${data.email}" style="color: #00e676; text-decoration: none;">${data.email}</a>
+                <a href="mailto:${email}" style="color: #00e676; text-decoration: none;">${email}</a>
               </td>
             </tr>
             <tr>
               <td style="padding: 8px 0; color: #64748b; font-size: 13px;">Phone</td>
-              <td style="padding: 8px 0; font-weight: 600; color: #1e293b;">${data.phone || 'Not provided'}</td>
+              <td style="padding: 8px 0; font-weight: 600; color: #1e293b;">${phone}</td>
             </tr>
             <tr>
               <td style="padding: 8px 0; color: #64748b; font-size: 13px;">Service</td>
               <td style="padding: 8px 0;">
-                <span style="background: #00e676; color: #0a0a0a; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700;">${data.service}</span>
+                <span style="background: #00e676; color: #0a0a0a; padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 700;">${service}</span>
               </td>
             </tr>
           </table>
@@ -54,7 +62,7 @@ function buildEmailHtml(data: z.infer<typeof contactSchema>): string {
         <!-- Message Card -->
         <div style="border-left: 4px solid #00e676; background: #f0fff4; border-radius: 0 12px 12px 0; padding: 20px;">
           <h3 style="margin: 0 0 12px; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; color: #64748b;">Message</h3>
-          <p style="margin: 0; color: #1e293b; line-height: 1.7; white-space: pre-wrap;">${data.message}</p>
+          <p style="margin: 0; color: #1e293b; line-height: 1.7; white-space: pre-wrap;">${message}</p>
         </div>
       </div>
 
@@ -111,11 +119,11 @@ export async function POST(request: NextRequest) {
       from: `"WELLDROPP Contact Form" <${gmailUser}>`,
       to: 'welldropp.tech@gmail.com',
       replyTo: data.email,
-      subject: `New Contact Form Submission — ${data.firstName} ${data.lastName} (${data.service})`,
+      subject: `New Contact Form Submission — ${data.first_name} ${data.last_name} (${data.service})`,
       text: [
         `New Contact Form Submission`,
         ``,
-        `Name: ${data.firstName} ${data.lastName}`,
+        `Name: ${data.first_name} ${data.last_name}`,
         `Email: ${data.email}`,
         `Phone: ${data.phone || 'Not provided'}`,
         `Service: ${data.service}`,
@@ -133,7 +141,7 @@ export async function POST(request: NextRequest) {
       { success: true, message: 'Your message has been sent successfully! We will get back to you soon.' },
       { status: 200 }
     );
-  } catch (error: any) {
+  } catch (error) {
     console.error('Contact form error:', error);
     return NextResponse.json(
       { success: false, message: 'Failed to send message. Please try again later or email us directly at welldropp.tech@gmail.com.' },

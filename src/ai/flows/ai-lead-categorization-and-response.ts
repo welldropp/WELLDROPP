@@ -8,6 +8,7 @@
 import { ai } from '@/ai/genkit';
 import { z } from 'genkit';
 import { sendEmail } from '@/lib/mail';
+import { escapeHtml } from '@/lib/utils';
 
 const AILeadCategorizationAndResponseInputSchema = z.object({
   name: z.string().describe('The name of the lead submitting the contact form.'),
@@ -89,6 +90,14 @@ const aiLeadCategorizationAndResponseFlow = ai.defineFlow(
     }
 
     try {
+      const safeName = escapeHtml(input.name);
+      const safeEmail = escapeHtml(input.email);
+      const safePhone = escapeHtml(input.phone || 'Not provided');
+      const safeService = escapeHtml(input.service);
+      const safeMessage = escapeHtml(input.message);
+      const safeCategory = escapeHtml(output.category);
+      const safeDraftResponse = escapeHtml(output.draftResponse);
+
       await sendEmail({
         to: 'welldropp.tech@gmail.com',
         subject: `[New Lead] ${output.category} Inquiry from ${input.name}`,
@@ -97,18 +106,18 @@ const aiLeadCategorizationAndResponseFlow = ai.defineFlow(
           <div style="font-family: sans-serif; max-width: 600px; border: 1px solid #e2e8f0; padding: 20px; border-radius: 10px;">
             <h2 style="color: #00e676;">New Contact Form Submission</h2>
             <hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 20px 0;">
-            <p><strong>Name:</strong> ${input.name}</p>
-            <p><strong>Email:</strong> ${input.email}</p>
-            <p><strong>Phone:</strong> ${input.phone || 'Not provided'}</p>
-            <p><strong>Service:</strong> ${input.service}</p>
-            <p><strong>Category (AI Identified):</strong> ${output.category}</p>
+            <p><strong>Name:</strong> ${safeName}</p>
+            <p><strong>Email:</strong> ${safeEmail}</p>
+            <p><strong>Phone:</strong> ${safePhone}</p>
+            <p><strong>Service:</strong> ${safeService}</p>
+            <p><strong>Category (AI Identified):</strong> ${safeCategory}</p>
             <div style="background: #f8fafc; padding: 15px; border-radius: 5px; margin-top: 20px;">
               <p><strong>Message:</strong></p>
-              <p style="white-space: pre-wrap;">${input.message}</p>
+              <p style="white-space: pre-wrap;">${safeMessage}</p>
             </div>
             <div style="margin-top: 30px; padding: 15px; border-left: 4px solid #00e676; background: #f0fff4;">
               <p><strong>AI Draft Response:</strong></p>
-              <p>${output.draftResponse}</p>
+              <p>${safeDraftResponse}</p>
             </div>
           </div>
         `,

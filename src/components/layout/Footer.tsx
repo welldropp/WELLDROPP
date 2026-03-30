@@ -23,7 +23,10 @@ export function Footer() {
             <p className="text-muted-foreground text-sm leading-relaxed max-w-xs mb-8">
               Drop Smarter. Scale Faster. — AI solutions precisely engineered for modern businesses. From agents to e-commerce, we build it all.
             </p>
-            
+            <p className="text-muted-foreground/60 text-xs mt-3 mb-6">
+              Coimbatore, Tamil Nadu, India
+            </p>
+
             {/* MSME Credential Badge */}
             <div className="bg-white/5 border border-white/10 rounded-2xl p-4 flex items-center gap-4 max-w-sm hover:border-primary/30 hover:bg-white/10 transition-all duration-300 group">
               <div className="relative flex-shrink-0 opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500">
@@ -42,11 +45,11 @@ export function Footer() {
           <div>
             <h4 className="font-black text-[10px] uppercase tracking-[0.2em] text-foreground mb-6">Services</h4>
             <ul className="space-y-4 text-sm font-semibold text-muted-foreground">
-              <li><Link href="#services" className="hover:text-primary transition-colors">Agentic AI</Link></li>
-              <li><Link href="#services" className="hover:text-primary transition-colors">Telegram Bots</Link></li>
-              <li><Link href="#services" className="hover:text-primary transition-colors">Chatbots</Link></li>
+              <li><Link href="#services" className="hover:text-primary transition-colors">Web Development</Link></li>
+              <li><Link href="#services" className="hover:text-primary transition-colors">AI Agents & Bots</Link></li>
+              <li><Link href="#services" className="hover:text-primary transition-colors">Data Analytics</Link></li>
+              <li><Link href="#services" className="hover:text-primary transition-colors">MLOps & Research</Link></li>
               <li><Link href="#services" className="hover:text-primary transition-colors">E-Commerce</Link></li>
-              <li><Link href="#services" className="hover:text-primary transition-colors">Dashboard</Link></li>
             </ul>
           </div>
 

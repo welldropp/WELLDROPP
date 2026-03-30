@@ -9,12 +9,12 @@ import { Logo } from "@/components/ui/Logo"
 import { cn } from "@/lib/utils"
 
 const navLinks = [
-  { name: "Services", href: "/#services" },
-  { name: "Works", href: "/#works" },
-  { name: "About", href: "/#about" },
-  { name: "Pricing", href: "/#pricing" },
-  { name: "Research", href: "/#research" },
-  { name: "Contact", href: "/#contact" },
+  { name: "Services", href: "#services" },
+  { name: "Works", href: "#works" },
+  { name: "About", href: "#about" },
+  { name: "Pricing", href: "#pricing" },
+  { name: "Research", href: "#research" },
+  { name: "Contact", href: "#contact" },
 ]
 
 export function Navbar() {

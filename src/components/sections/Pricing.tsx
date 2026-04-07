@@ -125,9 +125,8 @@ export function Pricing() {
                     : "border-border hover:bg-primary hover:text-background transition-colors"
                 )}
               >
-                <a href={plan.formUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
+                <a href="#contact" className="flex items-center justify-center gap-2">
                   {plan.price === "Custom" ? "Contact Sales" : "Get Started"}
-                  <ExternalLink className="w-4 h-4" />
                 </a>
               </Button>
             </div>

@@ -6,20 +6,41 @@ WELLDROPP is a premium, research-backed digital agency platform specializing in 
 
 ### Prerequisites
 - [Node.js](https://nodejs.org/) (v18 or higher recommended)
-- [npm](https://www.npmjs.com/)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
 
-### Installation
+### 1. Installation
 Clone the repository and install the dependencies:
 ```bash
 npm install
 ```
 
-### Development
+### 2. Environment Setup
+Create a `.env.local` file in the root directory and add the following variables (refer to `.env.example`):
+```env
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
+
+### 3. Running Locally
 To start the development server on the custom port **9002**:
 ```bash
 npm run dev
 ```
 Visit [http://localhost:9002](http://localhost:9002) in your browser.
+
+### 4. Build for Production
+To create an optimized production build:
+```bash
+npm run build
+npm start
+```
+
+## 🤖 AI Features
+### AI Chatbot Integration
+The website now features a fully integrated **AI Assistant** widget.
+- **Backend**: Hosted on Vercel
+- **Frontend**: `src/components/ui/ChatWidget.tsx`
+- **Logic**: Real-time interaction with custom AI agents for customer support and lead generation.
 
 ## 🛠️ Tech Stack
 - **Framework**: [Next.js 15+](https://nextjs.org/)

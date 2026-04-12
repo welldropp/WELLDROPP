@@ -1,5 +1,5 @@
 
-import type {Metadata} from 'next';
+import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -13,6 +13,7 @@ export const metadata: Metadata = {
 };
 
 import { Toaster } from "@/components/ui/toaster"
+import { ChatWidget } from "@/components/ui/ChatWidget"
 
 export default function RootLayout({
   children,
@@ -49,6 +50,7 @@ export default function RootLayout({
         />
         {children}
         <Toaster />
+        <ChatWidget />
       </body>
     </html>
   );

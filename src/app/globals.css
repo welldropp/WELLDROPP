@@ -6,7 +6,7 @@
   :root {
     --background: 137 54% 3%;
     --foreground: 133 33% 94%;
-    --card: 135 46% 8%;
+    --card: 135 46% 6%;
     --card-foreground: 133 33% 94%;
     --popover: 137 54% 4%;
     --popover-foreground: 133 33% 94%;
@@ -14,16 +14,16 @@
     --primary-foreground: 137 54% 3%;
     --secondary: 158 82% 68%;
     --secondary-foreground: 137 54% 3%;
-    --muted: 124 29% 40%;
-    --muted-foreground: 124 20% 60%;
+    --muted: 135 30% 10%;
+    --muted-foreground: 124 20% 55%;
     --accent: 151 100% 45%;
     --accent-foreground: 137 54% 3%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 133 33% 94%;
-    --border: 134 40% 17%;
-    --input: 134 40% 17%;
+    --border: 134 40% 14%;
+    --input: 134 40% 14%;
     --ring: 151 100% 45%;
-    --radius: 1rem;
+    --radius: 0.75rem;
   }
 }
 
@@ -42,16 +42,16 @@
 @layer utilities {
   .hero-grid {
     background-image:
-      linear-gradient(rgba(0,230,118,0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0,230,118,0.05) 1px, transparent 1px);
+      linear-gradient(rgba(0,230,118,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,230,118,0.04) 1px, transparent 1px);
     background-size: 55px 55px;
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black, transparent);
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 50%, black, transparent);
   }
   .hero-glow {
-    background: radial-gradient(ellipse, rgba(0,230,118,0.1) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(0,230,118,0.08) 0%, transparent 70%);
   }
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 to-cyan-400;
   }
   .glass {
     @apply bg-white/5 backdrop-blur-md border border-white/10;
@@ -59,8 +59,87 @@
   .glass-card {
     @apply bg-card/60 backdrop-blur-lg border border-border hover:border-primary/40 transition-all duration-300;
   }
+  .glow-green {
+    box-shadow: 0 0 30px rgba(0, 230, 118, 0.2), 0 0 60px rgba(0, 230, 118, 0.08);
+  }
+  .glow-green-sm {
+    box-shadow: 0 0 15px rgba(0, 230, 118, 0.15);
+  }
+  .gradient-border-top {
+    position: relative;
+  }
+  .gradient-border-top::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00e676, #67e8f9, transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+    border-radius: var(--radius) var(--radius) 0 0;
+  }
+  .gradient-border-top:hover::before {
+    opacity: 1;
+  }
 }
 
+/* Marquee animation */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+.marquee-track {
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-track-reverse {
+  animation: marquee-reverse 25s linear infinite;
+}
+
+.marquee-track:hover,
+.marquee-track-reverse:hover {
+  animation-play-state: paused;
+}
+
+/* Gradient animation */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-gradient-shift {
+  background-size: 200% 200%;
+  animation: gradient-shift 6s ease infinite;
+}
+
+/* Blob animations */
+@keyframes blob-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(20px, -30px) scale(1.05); }
+  66% { transform: translate(-15px, 15px) scale(0.97); }
+}
+
+.animate-blob {
+  animation: blob-float 12s ease-in-out infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Blink */
 @keyframes blink {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.4; }
@@ -68,6 +147,16 @@
 
 .animate-blink {
   animation: blink 2s infinite;
+}
+
+/* Fade in up */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
 }
 
 ::-webkit-scrollbar {

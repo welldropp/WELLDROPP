@@ -14,8 +14,7 @@ export function Footer() {
 
   return (
     <footer className="bg-background border-t border-border/50 pt-20 pb-10 relative overflow-hidden">
-      {/* Subtle background glow */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-blue-600/5 blur-[80px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[600px] h-[200px] bg-primary/5 blur-[80px] rounded-full pointer-events-none" />
 
       <div className="container mx-auto px-6 relative">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 lg:gap-16 mb-16">
@@ -31,13 +30,13 @@ export function Footer() {
             </p>
 
             {/* MSME Credential Badge */}
-            <div className="bg-blue-500/5 border border-blue-500/15 rounded-xl p-4 flex items-center gap-4 max-w-xs hover:border-blue-500/30 hover:bg-blue-500/8 transition-all duration-300 group">
+            <div className="bg-primary/5 border border-primary/15 rounded-xl p-4 flex items-center gap-4 max-w-xs hover:border-primary/30 hover:bg-primary/8 transition-all duration-300 group">
               <div className="relative flex-shrink-0 group-hover:scale-105 transition-transform duration-500">
-                <div className="absolute inset-0 bg-blue-500/10 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-primary/10 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <MsmeLogo size={44} className="relative z-10" />
               </div>
               <div className="flex flex-col">
-                <span className="text-blue-400 font-bold uppercase tracking-widest text-[9px] block mb-1">Government Registered</span>
+                <span className="text-primary font-bold uppercase tracking-widest text-[9px] block mb-1">Government Registered</span>
                 <p className="text-[11px] text-muted-foreground leading-snug group-hover:text-foreground/80 transition-colors">
                   <strong className="text-foreground/90">Welldropp</strong> — Certified MSME (Udyam) enterprise.
                 </p>
@@ -46,37 +45,36 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-bold text-[10px] uppercase tracking-[0.2em] text-blue-400 mb-5">Services</h4>
+            <h4 className="font-bold text-[10px] uppercase tracking-[0.2em] text-primary mb-5">Services</h4>
             <ul className="space-y-3.5 text-sm text-muted-foreground">
-              <li><Link href="#services" className="hover:text-blue-400 transition-colors">Web Development</Link></li>
-              <li><Link href="#services" className="hover:text-blue-400 transition-colors">AI Agents &amp; Bots</Link></li>
-              <li><Link href="#services" className="hover:text-blue-400 transition-colors">Data Analytics</Link></li>
-              <li><Link href="#services" className="hover:text-blue-400 transition-colors">MLOps &amp; Research</Link></li>
-              <li><Link href="#services" className="hover:text-blue-400 transition-colors">E-Commerce</Link></li>
+              <li><Link href="#services" className="hover:text-primary transition-colors">Web Development</Link></li>
+              <li><Link href="#services" className="hover:text-primary transition-colors">AI Agents &amp; Bots</Link></li>
+              <li><Link href="#services" className="hover:text-primary transition-colors">Data Analytics</Link></li>
+              <li><Link href="#services" className="hover:text-primary transition-colors">MLOps &amp; Research</Link></li>
+              <li><Link href="#services" className="hover:text-primary transition-colors">E-Commerce</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-bold text-[10px] uppercase tracking-[0.2em] text-blue-400 mb-5">Company</h4>
+            <h4 className="font-bold text-[10px] uppercase tracking-[0.2em] text-primary mb-5">Company</h4>
             <ul className="space-y-3.5 text-sm text-muted-foreground">
-              <li><Link href="#about" className="hover:text-blue-400 transition-colors">About Us</Link></li>
-              <li><Link href="#research" className="hover:text-blue-400 transition-colors">Research Lab</Link></li>
-              <li><Link href="#contact" className="hover:text-blue-400 transition-colors">Contact Us</Link></li>
-              <li><Link href="#works" className="hover:text-blue-400 transition-colors">Our Work</Link></li>
+              <li><Link href="#about" className="hover:text-primary transition-colors">About Us</Link></li>
+              <li><Link href="#research" className="hover:text-primary transition-colors">Research Lab</Link></li>
+              <li><Link href="#contact" className="hover:text-primary transition-colors">Contact Us</Link></li>
+              <li><Link href="#works" className="hover:text-primary transition-colors">Our Work</Link></li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-bold text-[10px] uppercase tracking-[0.2em] text-blue-400 mb-5">Legal</h4>
+            <h4 className="font-bold text-[10px] uppercase tracking-[0.2em] text-primary mb-5">Legal</h4>
             <ul className="space-y-3.5 text-sm text-muted-foreground flex flex-col items-start">
-              <li><Link href="/privacy-policy" className="hover:text-blue-400 transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="hover:text-blue-400 transition-colors">Terms of Use</Link></li>
-              <li><Link href="/cookie-policy" className="hover:text-blue-400 transition-colors">Cookie Policy</Link></li>
+              <li><Link href="/privacy-policy" className="hover:text-primary transition-colors">Privacy Policy</Link></li>
+              <li><Link href="/terms" className="hover:text-primary transition-colors">Terms of Use</Link></li>
+              <li><Link href="/cookie-policy" className="hover:text-primary transition-colors">Cookie Policy</Link></li>
             </ul>
           </div>
         </div>
 
-        {/* Bottom strip */}
         <div className="pt-8 border-t border-border/40 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-xs text-muted-foreground/60 uppercase tracking-widest">
             © {year || '2025'} Welldropp Technologies. All rights reserved.
@@ -95,7 +93,7 @@ export function Footer() {
                 rel="noopener noreferrer"
                 title={social.title}
                 aria-label={social.title}
-                className="w-9 h-9 rounded-lg bg-card border border-border flex items-center justify-center font-bold text-sm text-muted-foreground hover:border-blue-500/40 hover:text-blue-400 hover:bg-blue-500/5 transition-all"
+                className="w-9 h-9 rounded-lg bg-card border border-border flex items-center justify-center font-bold text-sm text-muted-foreground hover:border-primary/40 hover:text-primary hover:bg-primary/5 transition-all"
               >
                 {social.label}
               </Link>

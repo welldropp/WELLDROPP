@@ -22,26 +22,19 @@ export function Navbar() {
   const [scrolled, setScrolled] = React.useState(false)
   const [mounted, setMounted] = React.useState(false)
 
-  React.useEffect(() => {
-    setMounted(true)
-  }, [])
+  React.useEffect(() => { setMounted(true) }, [])
 
-  // Block body scroll when menu is open
   React.useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden"
     } else {
       document.body.style.overflow = "unset"
     }
-    return () => {
-      document.body.style.overflow = "unset"
-    }
+    return () => { document.body.style.overflow = "unset" }
   }, [isOpen])
 
   React.useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-    }
+    const handleScroll = () => setScrolled(window.scrollY > 20)
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
@@ -49,13 +42,12 @@ export function Navbar() {
   const mobileMenu = mounted ? createPortal(
     <div
       className={cn(
-        "lg:hidden fixed inset-0 z-[99999] bg-[hsl(228,50%,4%)]/98 backdrop-blur-3xl flex flex-col justify-center items-center p-8 transition-all duration-500 ease-in-out",
+        "lg:hidden fixed inset-0 z-[99999] bg-background/98 backdrop-blur-3xl flex flex-col justify-center items-center p-8 transition-all duration-500 ease-in-out",
         isOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none"
       )}
     >
-      {/* Close button */}
       <button
-        className="absolute top-6 right-6 w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-blue-400 transition-all active:scale-95 shadow-lg hover:bg-blue-500/10"
+        className="absolute top-6 right-6 w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-primary transition-all active:scale-95 hover:bg-primary/10"
         onClick={() => setIsOpen(false)}
         aria-label="Close Menu"
       >
@@ -68,7 +60,7 @@ export function Navbar() {
             key={link.name}
             href={link.href}
             className={cn(
-              "text-4xl md:text-5xl font-black transition-all duration-300 transform hover:text-blue-400",
+              "text-4xl md:text-5xl font-black transition-all duration-300 transform hover:text-primary",
               isOpen ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
             )}
             style={{ transitionDelay: `${i * 75}ms` }}
@@ -85,15 +77,14 @@ export function Navbar() {
           <Button
             asChild
             size="lg"
-            className="w-full h-16 rounded-xl font-black text-xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-cyan-500 text-white shadow-[0_0_30px_rgba(37,99,235,0.35)] transition-all"
+            className="w-full h-16 rounded-xl font-black text-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-[0_0_30px_rgba(0,230,118,0.2)] transition-all"
           >
             <Link href="#contact" onClick={() => setIsOpen(false)}>Get Started →</Link>
           </Button>
         </div>
       </div>
 
-      {/* Decorative glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[50%] bg-blue-600/5 blur-[120px] rounded-full -z-10 animate-pulse pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[150%] h-[50%] bg-primary/5 blur-[120px] rounded-full -z-10 animate-pulse pointer-events-none" />
     </div>,
     document.body
   ) : null
@@ -103,7 +94,7 @@ export function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-[100] transition-all duration-500",
         scrolled
-          ? "bg-[hsl(228,50%,4%)]/90 backdrop-blur-xl border-b border-blue-500/10 py-3 md:py-4"
+          ? "bg-background/90 backdrop-blur-xl border-b border-primary/10 py-3 md:py-4"
           : "bg-transparent py-5 md:py-6"
       )}
     >
@@ -122,13 +113,13 @@ export function Navbar() {
                 className="text-[13px] font-semibold text-muted-foreground hover:text-foreground transition-all duration-200 relative group/link"
               >
                 {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-gradient-to-r from-blue-500 to-cyan-400 transition-all duration-300 group-hover/link:w-full" />
+                <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-gradient-to-r from-primary to-secondary transition-all duration-300 group-hover/link:w-full" />
               </Link>
             ))}
           </div>
           <Button
             asChild
-            className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-cyan-500 text-white font-semibold rounded-lg px-6 transition-all hover:translate-y-[-1px] shadow-[0_0_20px_rgba(37,99,235,0.3)] hover:shadow-[0_0_30px_rgba(37,99,235,0.45)]"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 font-semibold rounded-lg px-6 transition-all hover:-translate-y-px shadow-[0_0_20px_rgba(0,230,118,0.2)] hover:shadow-[0_0_30px_rgba(0,230,118,0.35)]"
           >
             <Link href="#contact">Get Started →</Link>
           </Button>
@@ -136,11 +127,11 @@ export function Navbar() {
 
         {/* Mobile Toggle */}
         <button
-          className="lg:hidden relative z-[100] w-11 h-11 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-foreground transition-all active:scale-95 hover:bg-blue-500/10 hover:border-blue-500/30"
+          className="lg:hidden relative z-[100] w-11 h-11 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 text-foreground transition-all active:scale-95 hover:bg-primary/10 hover:border-primary/30"
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle Menu"
         >
-          {isOpen ? <X size={22} className="text-blue-400 opacity-0" /> : <Menu size={22} />}
+          {isOpen ? <X size={22} className="text-primary opacity-0" /> : <Menu size={22} />}
         </button>
       </div>
 

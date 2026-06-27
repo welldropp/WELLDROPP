@@ -2,11 +2,10 @@
 
 ## Core Features:
 
-- Dynamic Content Showcase: Display all key sections (Hero, About Us, Services, Research, Projects, Pricing, Why Choose Us, Contact, Footer) with visually premium and interactive layouts.
+- Dynamic Content Showcase: Display all key sections (Hero, About Us, Services, Research, Projects, Why Choose Us, Contact, Footer) with visually premium and interactive layouts.
 - Interactive Service Presentations: Showcase services through interactive glass cards with hover animations, glow borders, and detailed information expanded on click or modal popup.
 - Advanced Project Portfolio: Present case-study style project cards in a grid layout, including image previews, results-based descriptions, hover zoom effects, and modal popups for full project details.
 - AI-Enhanced Lead Capture Form: A contact form featuring clean design, floating labels, and an underlying generative AI tool to categorize inquiries and suggest personalized responses to leads, improving efficiency.
-- Premium Pricing Tiers: Visually display pricing plans with clear feature highlights, smooth hover scaling, distinctive glow borders for the 'Most Popular' plan, and compelling call-to-action buttons.
 - Futuristic Research Lab Display: An immersive 'future lab' aesthetic for the research section, incorporating animated elements like moving lines, nodes, and data flow visuals to convey innovation and expertise.
 - Seamless User Experience (UX): Implement a fully responsive design for mobile, tablet, and desktop, incorporating smooth scrolling, a sticky navbar with blur effect, loading animations, and scroll-reveal effects for all key sections.
 

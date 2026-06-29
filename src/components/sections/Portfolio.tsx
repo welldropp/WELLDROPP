@@ -16,6 +16,38 @@ import {
 export function Portfolio() {
   const projects = [
     {
+      title: "Tode",
+      category: "Machine Learning",
+      description: "Advanced ML model implementation for predictive analysis and pattern recognition.",
+      image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&q=80&w=1200",
+      external: "https://github.com/welldropp/tode",
+      tags: ["Python", "Machine Learning", "Research", "GitHub"],
+      overview: "An advanced machine learning repository focused on robust model implementation and experimentation.",
+      problem: "Complex data patterns require sophisticated models that are both accurate and scalable for real-world applications.",
+      solution: "Developed a comprehensive ML pipeline and model architecture to process and analyze complex datasets efficiently.",
+      results: [
+        "High accuracy predictive modeling",
+        "Scalable data processing architecture",
+        "Open-source implementation for community research"
+      ]
+    },
+    {
+      title: "Tede Annotation v1",
+      category: "Data Tools",
+      description: "A specialized data annotation tool designed for efficient machine learning dataset preparation.",
+      image: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1200",
+      external: "https://github.com/welldropp/tede_annotation.v1",
+      tags: ["Python", "Data Processing", "MLOps", "GitHub"],
+      overview: "A dedicated toolkit for streamlining the data annotation process for machine learning engineering teams.",
+      problem: "Data annotation is frequently a major bottleneck in the ML pipeline, demanding tedious and error-prone manual effort.",
+      solution: "Built a customized annotation interface to accelerate dataset preparation, ensuring high-quality labels for model training.",
+      results: [
+        "Accelerated dataset preparation time",
+        "Improved annotation accuracy and consistency",
+        "Streamlined workflow for ML researchers"
+      ]
+    },
+    {
       title: "Clinic Website",
       category: "Healthcare",
       description: "A comprehensive, highly accessible platform for a medical clinic to manage patients and build trust.",

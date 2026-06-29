@@ -105,7 +105,57 @@ const navItems: NavItem[] = [
       },
     ],
   },
-  { name: "Works", href: "#works" },
+  {
+    name: "Works",
+    columns: [
+      {
+        title: "ML/DL Projects",
+        links: [
+          {
+            name: "Tode",
+            href: "https://github.com/welldropp/tode",
+            description: "Advanced ML model implementation.",
+            icon: Bot,
+          },
+          {
+            name: "Tede Annotation v1",
+            href: "https://github.com/welldropp/tede_annotation.v1",
+            description: "Data annotation tools for ML.",
+            icon: Microscope,
+          },
+        ],
+      },
+      {
+        title: "Web Development",
+        links: [
+          {
+            name: "Clinic Website",
+            href: "https://clinic-sample-website-six.vercel.app/",
+            description: "Healthcare platform for patient booking.",
+            icon: LayoutTemplate,
+          },
+          {
+            name: "Advocate Website",
+            href: "https://sampleadvocatewesite.vercel.app/",
+            description: "Modern legal professional presence.",
+            icon: LayoutTemplate,
+          },
+          {
+            name: "Doctor Website",
+            href: "https://doctor-sample-website.vercel.app/",
+            description: "Personal portfolio for medical practitioners.",
+            icon: LayoutTemplate,
+          },
+          {
+            name: "Coaching Center",
+            href: "https://coaching-center-sample-website.vercel.app/",
+            description: "Educational platform for student enrollment.",
+            icon: LayoutTemplate,
+          },
+        ],
+      },
+    ],
+  },
   {
     name: "Company",
     columns: [
@@ -209,6 +259,8 @@ function MegaMenu({ columns }: { columns: MegaColumn[] }) {
                 <Link
                   key={link.name}
                   href={link.href}
+                  target={link.href.startsWith("http") ? "_blank" : undefined}
+                  rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   className="flex items-start gap-3 rounded-2xl p-3 hover:bg-white/5 transition-colors group/item"
                 >
                   <span className="w-9 h-9 shrink-0 flex items-center justify-center rounded-xl bg-primary/10 border border-primary/20 text-primary group-hover/item:scale-110 group-hover/item:bg-primary/20 transition-all">
@@ -351,6 +403,8 @@ export function Navbar() {
                                 key={link.name}
                                 href={link.href}
                                 onClick={closeMobile}
+                                target={link.href.startsWith("http") ? "_blank" : undefined}
+                                rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
                                 className="flex items-center gap-3 py-2 rounded-xl hover:bg-white/5 transition-colors group/m"
                               >
                                 <span className="w-8 h-8 shrink-0 flex items-center justify-center rounded-lg bg-primary/10 border border-primary/20 text-primary">

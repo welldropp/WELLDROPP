@@ -198,7 +198,7 @@ function AnnouncementBanner({ onDismiss }: { onDismiss: () => void }) {
 function MegaMenu({ columns }: { columns: MegaColumn[] }) {
   return (
     <div className="absolute left-1/2 top-full -translate-x-1/2 pt-4 opacity-0 invisible translate-y-2 group-hover/nav:opacity-100 group-hover/nav:visible group-hover/nav:translate-y-0 transition-all duration-300 z-50">
-      <div className="glass-card rounded-3xl p-6 shadow-2xl shadow-black/40 backdrop-blur-2xl bg-background/90 min-w-[34rem]">
+      <div className="rounded-3xl p-6 shadow-2xl shadow-black/60 bg-background border border-white/10 min-w-[34rem]">
         <div className="grid grid-cols-2 gap-8">
           {columns.map((col) => (
             <div key={col.title} className="space-y-1">
